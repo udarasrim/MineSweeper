@@ -8,15 +8,17 @@ import lombok.Setter;
 public class Square {
 
     private boolean revealed;
-    private final boolean mine;
+    private boolean mine;
     private int adjacentMines;
+    private final Position position;
 
-    public Square() {
-        this(false, false);
+    public Square(Position position) {
+        this(false, false, position);
     }
 
-    public Square(boolean revealed, boolean mine) {
+    public Square(boolean revealed, boolean mine, Position position) {
         this.revealed = revealed;
         this.mine = mine;
+        this.position = position;
     }
 }

@@ -1,23 +1,31 @@
 package org.udara;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class SquareTest {
 
     @Test
     public void shouldCreateUnRevealedNonMineSquare() {
-        Square square = new Square();
+        Square square = new Square(new Position(1, 1));
 
-        Assert.assertFalse(square.isRevealed());
-        Assert.assertFalse(square.isMine());
+        assertFalse(square.isRevealed());
+        assertFalse(square.isMine());
     }
 
     @Test
     public void shouldCreateUnRevealedMineSquare() {
-        Square square = new Square(false, true);
+        Square square = new Square(false, true, new Position(1, 1));
 
-        Assert.assertFalse(square.isRevealed());
-        Assert.assertTrue(square.isMine());
+        assertFalse(square.isRevealed());
+        assertTrue(square.isMine());
+    }
+
+    @Test
+    public void shouldContainPosition() {
+        Square square = new Square(false, true, new Position(1, 1));
+
+        assertNotNull(square.getPosition());
     }
 }

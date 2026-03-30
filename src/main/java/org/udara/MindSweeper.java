@@ -1,8 +1,11 @@
 package org.udara;
 
+public class MindSweeper {
 
-public class Main {
     static void main() {
 
+
     }
+
+
 }
