@@ -1,7 +1,12 @@
 package org.udara;
 
 import org.junit.Test;
+import org.udara.model.Grid;
+import org.udara.model.Position;
+import org.udara.model.Square;
 
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -41,6 +46,27 @@ public class GridTest {
     }
 
     //---------------------------------------------------------------
+
+    @Test
+    public void shouldHave3Neighbors() {
+        Grid grid = new Grid(4, 3);
+        List<Square> neighbors = grid.findNeighbors(new Position(1, 1));
+        assertEquals(3, neighbors.size());
+    }
+
+    @Test
+    public void shouldHave5Neighbors() {
+        Grid grid = new Grid(4, 3);
+        List<Square> neighbors = grid.findNeighbors(new Position(1, 2));
+        assertEquals(5, neighbors.size());
+    }
+
+    @Test
+    public void shouldHave8Neighbors() {
+        Grid grid = new Grid(4, 3);
+        List<Square> neighbors = grid.findNeighbors(new Position(2, 2));
+        assertEquals(8, neighbors.size());
+    }
 
     @Test
     public void gridShouldHaveGivenNumberOfSquares() {

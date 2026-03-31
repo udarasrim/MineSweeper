@@ -1,4 +1,4 @@
-package org.udara;
+package org.udara.model;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

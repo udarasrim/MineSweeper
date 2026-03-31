@@ -1,4 +1,4 @@
-package org.udara;
+package org.udara.model;
 
 import lombok.Getter;
 import lombok.Setter;

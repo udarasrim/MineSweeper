@@ -1,4 +1,4 @@
-package org.udara;
+package org.udara.model;
 
 import lombok.Getter;
 
@@ -69,7 +69,7 @@ public class Grid {
         }
     }
 
-    private List<Square> findNeighbors(Position position) {
+    public List<Square> findNeighbors(Position position) {
         List<Square> neighbors = new ArrayList<>(8);
         int row = position.getRow();
         int col = position.getCol();
@@ -80,7 +80,7 @@ public class Grid {
                 int newCol = col + j;
 
                 Position neighborPosition = new Position(newRow, newCol);
-                if (isValid(neighborPosition)) {
+                if (isValid(neighborPosition) && !neighborPosition.equals(position)) {
                     neighbors.add(squareMap.get(neighborPosition));
                 }
             }
@@ -91,5 +91,33 @@ public class Grid {
     private boolean isValid(Position p) {
         return p.getRow() >= 1 && p.getRow() <= size
                 && p.getCol() >= 1 && p.getCol() <= size;
+    }
+
+    public Square getSquare(Position position) {
+        return getSquareMap().get(position);
+    }
+
+    public void revealAllSquares() {
+        squareMap.values().forEach(square -> square.setRevealed(true));
+    }
+
+    public void revealSquareByPosition(Position position) {
+        Square square = getSquare(position);
+        revealSquare(square, null);
+
+    }
+
+    private void revealSquare(Square square, Square parentSquare) {
+        square.setRevealed(true);
+        List<Square> neighbors = findNeighbors(square.getPosition());
+        if(parentSquare != null) {
+            neighbors.remove(parentSquare);
+        }
+
+        neighbors.forEach(neighborSquare -> {
+            if(neighborSquare.getAdjacentMines() == 0 && !neighborSquare.isMine()) {
+                revealSquare(neighborSquare, square);
+            }
+        });
     }
 }

@@ -1,6 +1,8 @@
 package org.udara;
 
 import org.junit.Test;
+import org.udara.model.Position;
+import org.udara.model.Square;
 
 import static org.junit.Assert.*;
 
