@@ -1,5 +1,6 @@
 package org.udara.services.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.udara.model.Grid;
 import org.udara.model.Square;
 import org.udara.services.MineGenerator;
@@ -8,12 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Slf4j
 public class MineGeneratorImpl implements MineGenerator {
 
     @Override
     public void generate(Grid grid, int minesCount) {
+        log.debug("Generating {} mines", minesCount);
         placeMines(grid, minesCount);
         populateAdjacentMines(grid);
+        log.debug("Mines placed successfully");
     }
 
     private void placeMines(Grid grid, int minesCount) {

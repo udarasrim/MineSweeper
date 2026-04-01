@@ -1,11 +1,13 @@
 package org.udara.app.input;
 
+import lombok.extern.slf4j.Slf4j;
 import org.udara.model.Position;
 
 import java.util.Scanner;
 
 import static java.util.Objects.nonNull;
 
+@Slf4j
 public class InputHandler {
 
     private final Scanner scanner = new Scanner(System.in);
@@ -23,11 +25,13 @@ public class InputHandler {
 
                 if(gridSize < 4) {
                     System.out.println("Minimum grid size allowed is 4");
+                    log.warn("Invalid input received: {}", gridSize);
                 } else {
                     return gridSize;
                 }
             } catch (Exception e) {
                 System.out.println("Invalid number!");
+                log.warn("Invalid input received: ", e);
             }
         }
     }
@@ -42,11 +46,13 @@ public class InputHandler {
 
                 if (minesCount > maxMinesAllowed) {
                     System.out.println("Mines cannot exceed 35% of the grid (" + maxMinesAllowed + " max for size " + size + ")");
+                    log.warn("Invalid input received: {}", minesCount);
                 } else {
                     return minesCount;
                 }
             } catch (Exception e) {
                 System.out.println("Invalid number!");
+                log.warn("Invalid input received: ", e);
             }
         }
     }
@@ -60,7 +66,7 @@ public class InputHandler {
             if (nonNull(pos)) {
                 return pos;
             }
-
+            log.warn("Invalid position received: {}", pos);
             System.out.println("Invalid input!");
         }
     }

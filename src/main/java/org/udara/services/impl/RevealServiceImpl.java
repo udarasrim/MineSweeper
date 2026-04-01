@@ -1,17 +1,21 @@
 package org.udara.services.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.udara.model.*;
 import org.udara.services.RevealService;
 
 import java.util.List;
 
+@Slf4j
 public class RevealServiceImpl implements RevealService {
 
     @Override
     public int reveal(Grid grid, Position position) {
+        log.debug("Revealing position {}", position);
         Square square = grid.getSquare(position);
 
         if (square.isMine()) {
+            log.info("Mine hit at {}", position);
             grid.setGridStatus(GridStatus.HIT_MINE);
             return -1;
         }
@@ -26,7 +30,8 @@ public class RevealServiceImpl implements RevealService {
         } else {
             grid.setGridStatus(GridStatus.IN_PROGRESS);
         }
-
+        log.info("Grid status changed to {}", grid.getGridStatus());
+        log.debug("Square has {} adjacent mines", square.getAdjacentMines());
         return square.getAdjacentMines();
     }
 
