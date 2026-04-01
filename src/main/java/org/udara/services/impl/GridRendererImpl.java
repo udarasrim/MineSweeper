@@ -1,9 +1,9 @@
-package org.udara.ui.impl;
+package org.udara.services.impl;
 
 import org.udara.model.Grid;
 import org.udara.model.Position;
 import org.udara.model.Square;
-import org.udara.ui.GridRenderer;
+import org.udara.services.GridRenderer;
 
 public class GridRendererImpl implements GridRenderer {
 

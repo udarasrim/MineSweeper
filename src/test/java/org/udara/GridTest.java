@@ -1,6 +1,7 @@
 package org.udara;
 
 import org.junit.Test;
+import org.udara.model.GridStatus;
 import org.udara.model.Grid;
 import org.udara.model.Position;
 import org.udara.model.Square;
@@ -50,21 +51,21 @@ public class GridTest {
     @Test
     public void shouldHave3Neighbors() {
         Grid grid = new Grid(4, 3);
-        List<Square> neighbors = grid.findNeighbors(new Position(1, 1));
+        List<Square> neighbors = grid.getNeighbors(new Position(1, 1));
         assertEquals(3, neighbors.size());
     }
 
     @Test
     public void shouldHave5Neighbors() {
         Grid grid = new Grid(4, 3);
-        List<Square> neighbors = grid.findNeighbors(new Position(1, 2));
+        List<Square> neighbors = grid.getNeighbors(new Position(1, 2));
         assertEquals(5, neighbors.size());
     }
 
     @Test
     public void shouldHave8Neighbors() {
         Grid grid = new Grid(4, 3);
-        List<Square> neighbors = grid.findNeighbors(new Position(2, 2));
+        List<Square> neighbors = grid.getNeighbors(new Position(2, 2));
         assertEquals(8, neighbors.size());
     }
 
@@ -91,5 +92,12 @@ public class GridTest {
                 .map(Square::getAdjacentMines)
                 .reduce(0, Integer::sum);
         assertTrue(adjacentMinesCount >= 3 && adjacentMinesCount <= 8);
+    }
+
+    @Test
+    public void gameShouldStartAsNotStarted() {
+        Grid grid = new Grid(4, 1);
+
+        assertEquals(GridStatus.NOT_STARTED, grid.getGridStatus());
     }
 }

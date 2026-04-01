@@ -1,4 +1,4 @@
-package org.udara.ui;
+package org.udara.services;
 
 import org.udara.model.Grid;
 

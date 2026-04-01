@@ -2,8 +2,8 @@ package org.udara;
 
 import org.junit.Test;
 import org.udara.model.Grid;
-import org.udara.ui.GridRenderer;
-import org.udara.ui.impl.GridRendererImpl;
+import org.udara.services.GridRenderer;
+import org.udara.services.impl.GridRendererImpl;
 
 import static org.junit.Assert.assertEquals;
 
