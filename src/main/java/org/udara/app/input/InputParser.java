@@ -2,6 +2,9 @@ package org.udara.app.input;
 
 import org.udara.model.Position;
 
+/**
+ * Parses user input.
+ */
 public class InputParser {
 
     public static Position parse(String input, int size) {

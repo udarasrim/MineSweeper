@@ -5,6 +5,9 @@ import org.udara.model.Position;
 import org.udara.model.Square;
 import org.udara.services.GridRenderer;
 
+/**
+ * Renders the grid to a string.
+ */
 public class GridRendererImpl implements GridRenderer {
 
     @Override

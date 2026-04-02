@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Generates the mine positions.
+ */
 @Slf4j
 public class MineGeneratorImpl implements MineGenerator {
 

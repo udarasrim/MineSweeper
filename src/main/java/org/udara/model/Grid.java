@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import java.util.*;
 
+/**
+ * The grid of squares.
+ */
 @Getter
 public class Grid {
     private final int size;

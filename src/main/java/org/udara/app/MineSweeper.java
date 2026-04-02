@@ -9,6 +9,9 @@ import org.udara.services.GridRenderer;
 import org.udara.services.impl.GridRendererImpl;
 import org.udara.services.impl.RevealServiceImpl;
 
+/**
+ * The main class of the application.
+ */
 @Slf4j
 public class MineSweeper {
 
@@ -19,7 +22,7 @@ public class MineSweeper {
             MineGenerator mineGenerator = new MineGeneratorImpl();
             RevealService revealService = new RevealServiceImpl();
             Game game = new Game(gridRenderer, inputHandler, mineGenerator, revealService);
-            game.play();
+            game.play(); // Game starts here
         } catch (Exception e) {
             log.error("Game ends with Error: ", e);
             throw e;

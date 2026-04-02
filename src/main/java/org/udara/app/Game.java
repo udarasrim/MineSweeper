@@ -13,6 +13,9 @@ import org.udara.services.RevealService;
 import java.util.UUID;
 
 
+/**
+ * The main game class.
+ */
 @Slf4j
 public class Game {
 

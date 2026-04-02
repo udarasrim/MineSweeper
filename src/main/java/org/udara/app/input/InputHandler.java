@@ -7,6 +7,9 @@ import java.util.Scanner;
 
 import static java.util.Objects.nonNull;
 
+/**
+ * Handles user input.
+ */
 @Slf4j
 public class InputHandler {
 

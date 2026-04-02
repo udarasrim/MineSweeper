@@ -6,6 +6,9 @@ import org.udara.services.RevealService;
 
 import java.util.List;
 
+/**
+ * Reveals the squares.
+ */
 @Slf4j
 public class RevealServiceImpl implements RevealService {
 
