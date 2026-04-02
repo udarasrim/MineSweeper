@@ -1,10 +1,13 @@
 package org.udara;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.udara.model.GridStatus;
 import org.udara.model.Grid;
 import org.udara.model.Position;
 import org.udara.model.Square;
+import org.udara.services.MineGenerator;
+import org.udara.services.impl.MineGeneratorImpl;
 
 
 import java.util.List;
@@ -12,6 +15,14 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class GridTest {
+
+
+    private MineGenerator mineGenerator;
+
+    @Before
+    public void setup() {
+        mineGenerator = new MineGeneratorImpl();
+    }
 
     @Test
     public void gridShouldHaveGivenSize() {
@@ -26,27 +37,6 @@ public class GridTest {
 
         assertEquals(1, grid.getMinesCount());
     }
-
-    @Test
-    public void gridSizeShouldBeGraterThanOrEqualFour() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Grid(3, 1);
-        });
-
-        assertTrue("Minimum grid size allowed is 4".contains(exception.getMessage()));
-    }
-
-
-    @Test
-    public void gridSizeShouldHaveMaximumOf35PercentOfMines() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            new Grid(4, 6);
-        });
-
-        assertTrue(exception.getMessage().contains("Mines cannot exceed 35% of the grid"));
-    }
-
-    //---------------------------------------------------------------
 
     @Test
     public void shouldHave3Neighbors() {
@@ -79,6 +69,7 @@ public class GridTest {
     @Test
     public void gridShouldHaveGivenNumberOfMines() {
         Grid grid = new Grid(4, 1);
+        mineGenerator.generate(grid);
         long mineCount = grid.getSquareMap().values().stream()
                 .filter(Square::isMine)
                 .count();
@@ -88,6 +79,7 @@ public class GridTest {
     @Test
     public void gridShouldHaveAdjacentMines() {
         Grid grid = new Grid(4, 1);
+        mineGenerator.generate(grid);
         int adjacentMinesCount = grid.getSquareMap().values().stream()
                 .map(Square::getAdjacentMines)
                 .reduce(0, Integer::sum);

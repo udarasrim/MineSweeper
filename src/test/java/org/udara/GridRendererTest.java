@@ -1,15 +1,25 @@
 package org.udara;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.udara.model.Grid;
 import org.udara.services.GridRenderer;
+import org.udara.services.MineGenerator;
 import org.udara.services.impl.GridRendererImpl;
+import org.udara.services.impl.MineGeneratorImpl;
 
 import static org.junit.Assert.assertEquals;
 
 public class GridRendererTest {
 
-    GridRenderer gridRenderer = new GridRendererImpl();
+    private GridRenderer gridRenderer;
+    private MineGenerator mineGenerator;
+
+    @Before
+    public void setup() {
+        gridRenderer = new GridRendererImpl();
+        mineGenerator = new MineGeneratorImpl();
+    }
 
     @Test
     public void gridShouldHaveGivenSize() {
@@ -24,6 +34,7 @@ public class GridRendererTest {
     @Test
     public void gridShouldHaveGivenMines() {
         Grid grid = new Grid(4, 3);
+        mineGenerator.generate(grid);
         grid.revealAllSquares();
         String gridString = gridRenderer.render(grid);
         long mineCount = gridString.chars()

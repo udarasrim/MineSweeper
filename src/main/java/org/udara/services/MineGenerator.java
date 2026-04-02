@@ -4,5 +4,5 @@ import org.udara.model.Grid;
 
 public interface MineGenerator {
 
-    void generate(Grid grid, int minesCount);
+    void generate(Grid grid);
 }

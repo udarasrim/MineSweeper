@@ -32,12 +32,16 @@ public class Game {
         System.out.println("Welcome to Minesweeper!");
 
         while (true) {
-            int size = inputHandler.askGridSize();
-            int minesCount = inputHandler.askMineCount(size);
+            try {
+                int size = inputHandler.askGridSize();
+                int minesCount = inputHandler.askMineCount(size);
 
-            Grid grid = new Grid(size, minesCount);
-            mineGenerator.generate(grid, minesCount);
-            start(grid);
+                Grid grid = new Grid(size, minesCount);
+                mineGenerator.generate(grid);
+                start(grid);
+            } catch (Exception e) {
+                log.error("This iteration of the game ends with Error: ", e);
+            }
 
             inputHandler.pressAnyKeyToContinue();
         }
@@ -46,7 +50,7 @@ public class Game {
 
     public void start(Grid grid) {
         String gameId = UUID.randomUUID().toString();
-        log.info("Starting game (Game ID : {})with grid size: {} and mine count: {}", gameId, grid.getSize(), grid.getMinesCount());
+        log.info("Starting game (Game ID : {}) with grid size: {} and mine count: {}", gameId, grid.getSize(), grid.getMinesCount());
         grid.startGrid();
 
         while (grid.getGridStatus() == GridStatus.IN_PROGRESS) {

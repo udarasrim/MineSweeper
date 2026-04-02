@@ -13,7 +13,8 @@ import java.util.Random;
 public class MineGeneratorImpl implements MineGenerator {
 
     @Override
-    public void generate(Grid grid, int minesCount) {
+    public void generate(Grid grid) {
+        int minesCount = grid.getMinesCount();
         log.debug("Generating {} mines", minesCount);
         placeMines(grid, minesCount);
         populateAdjacentMines(grid);
