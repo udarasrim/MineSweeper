@@ -23,6 +23,10 @@ java -jar target/MineSweeper-1.0-SNAPSHOT.jar
 
 mvn test
 
+## Log file location
+
+./logs/minesweeper.log
+
 ## Assumptions
 
 * Minimum grid size is 4
