@@ -1,5 +1,9 @@
 # Minesweeper Game
 
+## Prerequisites
+Before running the application, make sure you have installed:
+- Java 21
+
 ## Run App (in Linux)
 
 In the command line, execute ./run-linux.sh
