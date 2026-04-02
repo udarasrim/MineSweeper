@@ -17,7 +17,7 @@ In the command line, execute ./run.sh
 
 mvn clean package
 
-java -jar target/MineSweeper-1.0-SNAPSHOT.jar
+java -jar target/MineSweeper-1.0-1.jar
 
 ## Run Tests
 
