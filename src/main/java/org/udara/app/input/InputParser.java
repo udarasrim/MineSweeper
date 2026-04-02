@@ -12,7 +12,7 @@ public class InputParser {
             int row = inputArr[0] - 'A' + 1;
             int col = Character.getNumericValue(inputArr[1]);
             Position p = new Position(row, col);
-            if(isValid(p, size)) {
+            if (isValid(p, size)) {
                 return p;
             }
         } catch (Exception e) {

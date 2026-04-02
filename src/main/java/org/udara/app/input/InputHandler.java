@@ -23,7 +23,7 @@ public class InputHandler {
                 System.out.println("Enter the size of the grid (e.g. 4 for a 4x4 grid): ");
                 int gridSize = Integer.parseInt(scanner.nextLine());
 
-                if(gridSize < 4) {
+                if (gridSize < 4) {
                     System.out.println("Minimum grid size allowed is 4");
                     log.warn("Invalid input received: {}", gridSize);
                 } else {
@@ -35,7 +35,7 @@ public class InputHandler {
             }
         }
     }
-    
+
     public int askMineCount(int size) {
         while (true) {
             try {

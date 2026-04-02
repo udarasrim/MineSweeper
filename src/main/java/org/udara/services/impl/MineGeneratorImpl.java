@@ -28,7 +28,7 @@ public class MineGeneratorImpl implements MineGenerator {
         int placed = 0;
 
         while (placed < minesCount) {
-            Square square =  squares.get(random.nextInt(squares.size()));
+            Square square = squares.get(random.nextInt(squares.size()));
 
             if (!square.isMine()) {
                 square.setMine(true);

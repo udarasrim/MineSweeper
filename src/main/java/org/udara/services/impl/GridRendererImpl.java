@@ -15,7 +15,7 @@ public class GridRendererImpl implements GridRenderer {
         appendHeader(sb, size);
 
         for (int row = 1; row <= size; row++) {
-            char rowName =  (char) ('A' + row - 1);
+            char rowName = (char) ('A' + row - 1);
             sb.append(rowName).append(" ");
 
             for (int col = 1; col <= size; col++) {
